@@ -22,6 +22,11 @@ gem 'devise'
 # Use bootstrap styling for devise
 gem 'devise-bootstrap-views'
 
+# to get stock quotes
+gem "stock_quote", '~> 2.0.0'
+
+gem 'irbtools', require: 'irbtools/binding'
+
 # Bootstrap
 gem 'twitter-bootstrap-rails'
 # jquery

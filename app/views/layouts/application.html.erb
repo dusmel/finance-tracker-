@@ -23,11 +23,11 @@
 
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'finance.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+    <%= favicon_link_tag 'finance.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '172x172' %>
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'finance.png', :rel => 'shortcut icon', :type => 'image/png' %>
+    <%= favicon_link_tag 'finance.png', :rel => 'shortcut icon', :type => 'image/png', :sizes => '172x172' %>
 
     <%= javascript_include_tag "application" %>
 
@@ -62,17 +62,6 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
       </div><!--/row-->
 
       <footer>
