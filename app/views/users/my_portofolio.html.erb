@@ -1,22 +1,42 @@
-<h1 class="display-1">My portofolio</h1>
-<div class="">
-  <%= form_tag search_stocks_path, remote: true, method: :get, id: "search-form" do %>
-  <div class="row form-group">
-    <div class="col-xs-10">
-      <%= text_field_tag :stock, params[:stock], placeholder: "search", autofocus: true, class: "form-control input-lg" %>
+<div id="my-portofolio">
+  <h1 class="display-1">My portofolio</h1>
+  <div class="">
+    <%= form_tag search_stocks_path, remote: true, method: :get, id: "search-form" do %>
+    <div class="row form-group">
+      <div class="col-xs-10">
+        <%= text_field_tag :stock, params[:stock], placeholder: "search", autofocus: true, class: "form-control input-lg" %>
+      </div>
+      <div class="col-xs-2">
+        <%= button_tag(type: :submit, class: "btn btn-primary btn-lg") do %>
+          <i class="fa fa-search"></i>
+          <span>Lookup Stocks</span>
+        <% end %>
+      </div>  
     </div>
-    <div class="col-xs-2">
-      <%= button_tag(type: :submit, class: "btn btn-primary btn-lg") do %>
-        <i class="fa fa-search"></i>
-        <span>Lookup Stocks</span>
-      <% end %>
-    </div>  
-  </div>
-  
-  <div id="results">
-    <%= render 'result' %>
-  </div>
+    <% end %>
+    <div id="results">
+      <%= render 'result' %>
+    </div>
+    <table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+      <thead class="thead-inverse|thead-default">
+        <tr>
+          <th>Name</th>
+          <th>Ticker</th>
+          <th>Current Price</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @user_stocks.each do |stock| %>
+          <tr>
+            <td><%= stock.name %></td>
+            <td><%= stock.ticker %></td>
+            <td><%= stock.last_price %></td>
+            <td><%= link_to 'delete', user_stock_path(stock), method: :delete, data: {confirm: "sure you want to delete?"}, class: "btn btn-xs btn-danger" %></td>
+          </tr>
+        <% end %>
+        </tbody>
+    </table>
     
-  <% end %>
-  
+  </div>
 </div>

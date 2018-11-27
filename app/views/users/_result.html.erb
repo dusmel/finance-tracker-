@@ -1,8 +1,29 @@
-<%= bootstrap_flash %>
+<% if params[:action] == "search" %>
+  <%= bootstrap_flash %>
+<% end %>
 <% if @stock %>
     <div class="result-block">
-      <strong>Name:</strong><span><h4><%= @stock.name %></h4></span>
-      <strong>Symbol:</strong><h4><%= @stock.ticker %></h4>
-      <strong>Last Price:</strong><h4><%= @stock.last_price %></h4>
+      <strong >Name:</strong><span><h5><%= @stock.name %></h5></span>
+      <strong>Symbol:</strong><h5><%= @stock.ticker %></h5>
+      <strong>Last Price:</strong><h5><%= @stock.last_price %></h5>
+      <small>
+        <% if current_user.can_add_stock?(@stock.ticker) %>
+          <%= link_to user_stocks_path(user: current_user, stock_ticker: @stock.ticker), method: :post, :class => "btn btn-success btn-xs"  do %>
+          ADD
+          <i class="fa fa-plus"></i> 
+          <% end %>
+        <% else %>
+          <% if current_user.stock_already_added?(@stock.ticker) %>
+            <span class="label label-danger">
+              You have Already added this block
+            </span>
+            <% elsif !current_user.under_stock_limit? %>
+              <h3 class="label label-danger">
+                You have reached the number of stock to track
+              </h3>
+          <% end %>
+        <% end %>
+      </small>
+      <i class="fa fa-plus"></i> 
     </div>
 <% end %>
