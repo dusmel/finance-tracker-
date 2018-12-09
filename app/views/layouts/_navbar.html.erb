@@ -8,9 +8,15 @@
     <a class="navbar-brand" href="#">FinanceTracker</a>
     <% if current_user %>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav col-md-6">
+      <div class="col-md-6">
+        <ul class="nav navbar-nav">
         <li><%= link_to "My Portofolio", myportofolio_path  %></li>
       </ul>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Friendship", friendship_path  %></li>
+      </ul>
+      </div>
+      
       <ul class="nav navbar-nav col-md-4 p-1">
         <div class="col-md-8 text-right full-name">
         <li>

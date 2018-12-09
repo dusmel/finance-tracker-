@@ -1,0 +1,3 @@
+module FiendshipsHelper
+  
+end

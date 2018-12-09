@@ -26,5 +26,18 @@ class User < ApplicationRecord
   def can_add_stock?(stock_ticker)
     !stock_already_added?(stock_ticker) && under_stock_limit?
   end
+
+
+  def self.search(key_word)
+    key_word.strip!
+    key_word.downcase!
+    key_word = "%#{key_word}%"
+    result = User.where('email like :key_word OR first_name like :key_word OR last_name like :key_word' , {key_word: key_word}).uniq
+  end
+
+  def already_friend?(friend_id)
+    self.friends.find { |f| f.id == friend_id}
+  end 
+
   
 end

@@ -1,1 +1,36 @@
-<h1 class="display-4">hello there</h1>
+<div id="my-friends">
+  <div class="lookup-friends mt-4">
+    <%= render 'lookup_friends' %>
+  </div>
+  <div id="friends-result">
+    <%= render 'friendship_result' %>
+  </div>
+  
+  
+  <% if @my_friends.count > 0 %>
+    <table class="table table-sm table-bordered table-hover table-inverse table-responsive">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @my_friends.each do |friend| %>
+          <tr>
+            <td><%= friend.full_name %></td>
+            <td><%= friend.email %></td>
+            <td>
+              <%= link_to 'Profile', user_path(friend), class: "btn btn-sm  btn-success" %>
+              <%= link_to 'Unfriend', friendship_path(id: friend), method: :delete, data: {confirm: "sure you want to delete?"}, class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+    </table>
+  <% else %>
+    <h1 class="display-3">You don't have any friend now would you like to see some?</h1>
+  <% end %>
+  
+</div>

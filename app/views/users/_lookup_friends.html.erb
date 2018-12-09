@@ -1,0 +1,13 @@
+<%= form_tag search_friends_path, remote: true, method: :get, id: "search-form" do %>
+  <div class="row form-group">
+    <div class="col-xs-10">
+      <%= text_field_tag :key_word, params[:key_word], placeholder: "search", autofocus: true, class: "form-control input-lg" %>
+    </div>
+    <div class="col-xs-2">
+      <%= button_tag(type: :submit, class: "btn btn-primary btn-lg") do %>
+        <i class="fa fa-search"></i>
+        <span>Lookup Friends</span>
+      <% end %>
+    </div>  
+  </div>
+<% end %>

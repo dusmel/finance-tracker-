@@ -1,0 +1,30 @@
+<div id="user-show">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>User Details</h2>
+      <div>
+        <h5><span>Firstname:  </span><span><%= @user.first_name %></span></h5>
+        <h5><span>Lastname:  </span><span><%= @user.last_name %></span></h5>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Current Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <% @user_stock.each do |stock| %>
+            <tr>
+            <td scope="row"><%= stock.name %></td>
+            <td><%= stock.ticker %></td>
+            <td><%= stock.last_price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

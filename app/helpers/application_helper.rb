@@ -6,5 +6,8 @@ module ApplicationHelper
     stock_added = user.stocks.find_by(ticker: stock_ticker)
     return true if stock_added
   end
+
+  
+  
   
 end

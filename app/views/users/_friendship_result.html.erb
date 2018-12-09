@@ -1,0 +1,29 @@
+<% if params[:action] == "search" %>
+  <%= bootstrap_flash %>
+  <% if @friends.any? %>
+      <div class="result-block">
+        <ul>
+          <% @friends.each do |friend| %>
+            <li>
+              <span><strong >Name:</strong></span><span><h5><%= friend.full_name %></h5></span>
+              <strong>Email:</strong><h5><%= friend.email %></h5>
+              <% unless !!current_user.already_friend?(friend.id) %>
+                <small>
+                  <%= link_to new_friendship_path(friend: friend), method: :post,  class: "btn btn-success btn-sm" do %>
+                    Add friend 
+                    <i class="fa fa-plus"></i> 
+                  <% end %>
+                </small>
+              <% end %>
+              <small>
+                <%= link_to user_path(friend), class: "btn btn-info btn-sm" do %>
+                Profile 
+                <i class="fa fa-user"></i> 
+                <% end %>
+              </small>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+<% end %>
